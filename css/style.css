@@ -1,0 +1,347 @@
+:root {
+    --primary: #9c27b0;
+    --dark-primary: #891190;
+    --secondary: #ffce00;
+    --dark-secondary: rgb(233, 187, 2);
+    --white: #fff;
+    --black: #000;
+
+    --font-main: 'Staatliches', cursive;
+
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*Globales*/
+
+body {
+    background-color: var(--primary);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.main {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    color: var(--white);
+    font-family: var(--font-main);
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+/*Utilidades*/
+@media (max-width: 768px){
+    .side-margin {
+        margin: 0 2rem;
+    }
+}
+
+/*Header*/
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.header__logo {
+    margin: 2rem 0;
+}
+
+/*Footer*/
+
+.footer {
+    background-color: var(--dark-primary);
+    padding: 1rem 0;
+    margin-top: 2.2rem;
+}
+
+.footer__text {
+    font-family: var(--font-main);
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+/*----------------Navigation-------------------------*/
+
+/*Se aclara las partes de lo que seria
+la utilizacion de BEM (Bloque elemento modificador)
+para solucionar la colision de nombres de clases*/
+
+.navigation {
+    /*Bloque*/
+    background-color: var(--dark-primary);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    /* Separacion del oto enlace *NUEVO* */
+}
+
+.navigation__link {
+    /*elemento*/
+    font-family: var(--font-main);
+    color: var(--white);
+    font-size: 3rem;
+}
+
+/*(LAST OF TYPE) Pseudoselector,  
+selecciona el ultimo enlace*/
+.navigation__link:last-of-type {
+    /*Separacion del profe *ANTIGUO**/
+    margin-right: 0;
+    /*quita margen al ultimo enlace*/
+}
+
+.navigation__link--active,
+/*Modificador*/
+.navigation__link:hover {
+    color: var(--secondary);
+}
+
+/*-----------------------Grid-------------------------*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/*--------------------Products----------------------*/
+
+.product {
+    background-color: var(--dark-primary);
+    padding: 1rem;
+}
+
+.product__name {
+    font-size: 4rem;
+}
+
+.product__price {
+    font-size: 4rem;
+    color: var(--secondary);
+}
+
+.product__name,
+.product__price {
+    font-family: var(--font-main);
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.product__image {
+    width: 100%;
+}
+
+/*---------------------Graphics----------------------*/
+/*El espacio grid para los graficos ya esta creado pero no tiene altura por eso 
+no se ven los graficos sin min-height*/
+.graphic {
+    min-height: 30rem;
+    /*Para solucionar problema*/
+    background-size: cover;
+    /*Para que ocupe todo el espacio disponible*/
+    background-repeat: no-repeat;
+    /*Para que nose repita la imagen varias veces*/
+}
+
+.graphic--shirt {
+    /*Configuracion para pantalla menor a 768px*/
+    /*Al reducir el tamaño de la pantalla se desaparecen ambos graficos 
+    y lo soluciona con min-height para ambos graficos*/
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    background-image: url(../img/grafico1.jpg);
+}
+
+.graphic--node {
+    background-image: url(../img/grafico2.jpg);
+    grid-row: 8 / 9;
+    grid-column: 1 / 3;
+}
+
+@media (min-width: 768px) {
+
+    /*Al reducir el tamaño de la pantalla se desaparece 
+     este grafico por eso es necesario que este en mq*/
+    /*Entonces cuando el tamaño sea superior a 768px 
+     aparecera la imagen con la siguiente configuracion*/
+    /*En este caso se utilizo el mq tambien porque se 
+     estaba utilizando la columna 4 del grid*/
+    .graphic--node {
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+        background-image: url(../img/grafico2.jpg);
+    }
+}
+
+/*--------------------------------------------PAG-NOSOTROS------------------------------------------*/
+.container-we {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+
+}
+
+@media (min-width: 768px) {
+    .container-we {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+.container-we__image {
+    width: 100%;
+    grid-row: 1 / 2;
+}
+
+@media (min-width: 768px) {
+    .container-we__image {
+        grid-column: 2 / 3;
+    }
+}
+
+/*Bloques*/
+.blocks {
+    max-width: 120rem;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .blocks {
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
+.title__buy {
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+}
+
+.block {
+    text-align: center;
+}
+
+.block__title {
+    margin: 0;
+}
+
+.block__image {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .block__image {
+        width: 80%;
+    }
+}
+
+/*-------------------------------PAG-PRODUCT0--------------------------------*/
+.product-shirt {
+    padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .product-shirt {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3rem;
+    }
+}
+.product-image {
+    width: 100%;
+}
+
+/*Form*/
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.form__field {
+    /*En tres lineas
+    border-width: 1rem;
+    border-style: solid;
+    border-color: var(--dark-primary);
+    */
+    /*En una linea*/
+    border: 1rem solid var(--dark-primary);
+    background-color: transparent;
+    color: var(--white);
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    width: 100%;
+}
+@media (max-width: 768px){
+    .form {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .form__field {
+        grid-column: 1 / 3;
+    }
+}
+.form__submit {
+    background-color: var(--secondary);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--font-main);
+    padding: 2rem;
+    transition: background-color .3s ease;  /*Transicion de cambio de color*/
+    grid-column: 1 / 3;
+}
+.form__submit:hover {
+    cursor: pointer;        /*Manito en el puntero*/
+    background-color: var(--dark-secondary);
+}
